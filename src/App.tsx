@@ -2,11 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router"
 import Body from "./components/Body"
 import Login from "./components/Login"
 import Profile from "./components/Profile"
+import { Provider } from "react-redux"
+import { store } from "./utils/AppStore"
 
 function App() {
 
   return (
     <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
             <Route path="/" element={<Body/>}>
@@ -15,6 +18,7 @@ function App() {
             </Route>
         </Routes>
       </BrowserRouter>
+      </Provider>
     </>
   )
 }
