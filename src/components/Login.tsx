@@ -2,6 +2,9 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { DevTool} from '@hookform/devtools'
 import  axios  from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { addUser } from '../utils/UserSlice'
+import { useNavigate } from 'react-router'
 
 type loginFormValues =  {
   email: string,
@@ -13,10 +16,16 @@ const Login = () => {
   const {register, formState, handleSubmit, control} = form
   const {errors} = formState
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const onSubmit = async(values: loginFormValues) => {
     console.log('values', values)
     const result = await axios.post('http://localhost:3000/login', values, {withCredentials: true})
-    console.log('data', result.data)
+    console.log('result', result.data.user)
+    if(result)
+      dispatch(addUser(result.data.user))
+    navigate('/feed')
   }
   return (
     // <div className="flex grow justify-center items-center">

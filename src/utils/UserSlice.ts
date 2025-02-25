@@ -1,7 +1,7 @@
-import { createSlice } from  @reduxjs/toolkit ;
-import type { PayloadAction } from  @reduxjs/toolkit ;
+import { createSlice } from  '@reduxjs/toolkit' ;
+import type { PayloadAction } from  '@reduxjs/toolkit' ;
 
-type User = {
+export type User = {
     firstName:  string ,
     lastName :  string ,
     email :  string ,
@@ -9,20 +9,22 @@ type User = {
     gender :  string,
     photo :  string ,
     skills : string[],
-} | null
+}
 
-const initialState : User = null
+type InitialState =  {
+    info: User | null
+}
+
+const initialState : InitialState = {
+    info: null
+}
 
 const userSlice =  createSlice({
     name: 'user',
     initialState,
     reducers:{
-            addUser: (state: any, action: PayloadAction<User>)=>{
-                state.value = action.payload
-            },
-            removeUser: (state: any)=>{
-                state.value = null
-            }
+            addUser: (state = initialState, action: PayloadAction<NonNullable<User>>)=> {state.info = action.payload},
+            removeUser: ()=> {}
     }
 })
 
