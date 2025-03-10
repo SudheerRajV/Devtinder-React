@@ -15,7 +15,7 @@ const Body = () => {
     try{
       if(user) return;
       const result = await axios.get('http://localhost:3000/profile', {withCredentials: true})
-      console.log("result", result)
+     // console.log("result", result)
       dispatch(addUser(result.data.user))
       navigate('/feed')
     }catch(error: unknown){
@@ -32,7 +32,7 @@ const Body = () => {
   },[])
 
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col h-screen'>
         <NavBar/>
         <Outlet/>
         <Footer/>
