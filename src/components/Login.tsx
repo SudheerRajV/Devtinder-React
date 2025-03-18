@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   const onSubmit = async(values: loginFormValues) => {
-    console.log('values', values)
+    //console.log('values', values)
     const result = await axios.post('http://localhost:3000/login', values, {withCredentials: true})
     console.log('result', result.data.user)
     if(result)
@@ -75,6 +75,10 @@ const Login = () => {
       <input type="password" className="input" placeholder="Password"  {...register('password',{required: {value: true, message: "Email is required"}})}/>
       <p className='error'>{errors.password?.message}</p>
       <button className="btn btn-primary mt-4" type='submit'>Submit</button>
+      <div className='flex flex-row justify-end items-center gap-1'>
+      <p>New User? </p>
+      <button className="btn btn-link p-0" onClick={()=> navigate('/signup')}>Create Account.</button>
+      </div>
     </fieldset>
     </form>
     <DevTool control = {control}/>

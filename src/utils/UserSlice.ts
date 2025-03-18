@@ -22,6 +22,7 @@ photo?: string | undefined;
 skills: string[]
 }
 
+
 type InitialState =  {
     info: User | null
 }

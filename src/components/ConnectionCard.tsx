@@ -7,8 +7,8 @@ type ConnectionProps = {
 const ConnectionCard = (props: ConnectionProps) => {
   return (
     <div className='flex flex-row bg-base-300 p-4 w-1/2 h-32 gap-4 rounded-2xl'>
-      <div className='justify-center'><img  className='h-20 w-20 rounded-full object-cover' src={props.user.photo} alt='photo'/></div>
-      <div>
+      <div className='justify-center shrink-0'><img  className='h-20 w-20 rounded-full object-cover' src={props.user.photo} alt='photo'/></div>
+      <div className='flex-grow basis-2'>
         <p>{props.user.firstName+" "+props.user.lastName}</p>
         <p>{props.user.email}</p>
         <p>{props.user.age+","+props.user.gender}</p>
