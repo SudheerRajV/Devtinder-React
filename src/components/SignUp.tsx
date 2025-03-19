@@ -18,6 +18,7 @@ const SignUp = () => {
     const navigate = useNavigate()
     const {register, handleSubmit, formState:{errors}, watch} = form
     const onSubmit = async(values: SignUpValues)=>{
+        //console.log('values',values)
         const result = await axios.post('http://localhost:3000/signup', values, {withCredentials: true})
         if(result)
             navigate('/login')
@@ -51,7 +52,7 @@ const SignUp = () => {
         <input type="text" className="input" placeholder="Photo url"  {...register('photo')}/>
         <p className='error'>{errors.photo?.message}</p>
         <label className="fieldset-label">Skills</label>
-        <textarea className="textarea textarea-xs" placeholder="Skills" {...register('skills')}></textarea>
+        <textarea className="textarea textarea-xs" placeholder="eg: React, MongoDB, NodeJS" {...register('skills')}></textarea>
         <p className='error'>{errors.skills?.message}</p>
         <button className="btn btn-primary mt-4" type='submit'>Submit</button>
         <div className='flex flex-row justify-end items-center gap-1'>
