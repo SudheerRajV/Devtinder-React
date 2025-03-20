@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addRequests, RequestUsers } from '../utils/RequestSlice'
 import { RootState } from '../utils/AppStore'
 import RequestCard from './RequestCard'
+import { BASE_URL } from '../utils/Constants'
+
 
 const Requests = () => {
     const dispatch = useDispatch()
@@ -14,7 +16,7 @@ const Requests = () => {
       }, [])
 
       const fetchRequests = async () =>{
-        const result = await axios.get('http://localhost:3000/user/requests', {withCredentials: true})
+        const result = await axios.get(BASE_URL+'/user/requests', {withCredentials: true})
          console.log('result', result)
         if(result && result.data)
           dispatch(addRequests(result.data.data))

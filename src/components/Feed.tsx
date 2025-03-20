@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../utils/AppStore'
 import { addFeeds } from '../utils/FeedSlice'
 import FeedCard from './FeedCard'
+import { BASE_URL } from '../utils/Constants'
 
 const Feed = () => {
   const dispatch = useDispatch()
   const feeds = useSelector((state: RootState) => state.feeds.users)
   
   const fetchFeeds =async()=>{
-    const result = await axios.get('http://localhost:3000/user/feed',{params:{page: 1,limit: 2}, withCredentials: true})
+    const result = await axios.get(BASE_URL+'/user/feed',{params:{page: 1,limit: 2}, withCredentials: true})
     console.log('FeedCard result', result)
     if(result)
       dispatch(addFeeds(result.data.data))

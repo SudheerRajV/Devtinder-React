@@ -2,6 +2,8 @@ import axios from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
+import { BASE_URL } from '../utils/Constants'
+
 
 type SignUpValues = {
   email: string,
@@ -19,7 +21,7 @@ const SignUp = () => {
     const {register, handleSubmit, formState:{errors}, watch} = form
     const onSubmit = async(values: SignUpValues)=>{
         //console.log('values',values)
-        const result = await axios.post('http://localhost:3000/signup', values, {withCredentials: true})
+        const result = await axios.post(BASE_URL+'/signup', values, {withCredentials: true})
         if(result)
             navigate('/login')
     }

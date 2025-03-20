@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../utils/AppStore'
 import { addUser } from '../utils/UserSlice'
 import { useEffect } from 'react'
+import { BASE_URL } from '../utils/Constants'
 
 const Body = () => {
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ const Body = () => {
   const fetchUser = async() => {
     try{
       if(user) return;
-      const result = await axios.get('http://localhost:3000/profile', {withCredentials: true})
+      const result = await axios.get(BASE_URL+'/profile', {withCredentials: true})
      // console.log("result", result)
       dispatch(addUser(result.data.user))
       navigate('/feed')

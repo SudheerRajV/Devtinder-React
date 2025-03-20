@@ -4,6 +4,7 @@ import { RootState } from '../utils/AppStore'
 import { Link } from 'react-router'
 import { removeUser } from '../utils/UserSlice'
 import axios from 'axios'
+import { BASE_URL } from '../utils/Constants'
 
 const NavBar = () => {
   const user = useSelector((state: RootState)=> state.user.info)
@@ -11,7 +12,7 @@ const NavBar = () => {
   const handleLogout = async() =>{
     try{
     dispatch(removeUser())
-    await axios.get('http://localhost:3000/logout', {withCredentials:true})
+    await axios.get(BASE_URL+'/logout', {withCredentials:true})
     } catch(error: unknown){
       console.log('logout error: ', error)
     }

@@ -3,8 +3,8 @@ import { addUser, User } from '../utils/UserSlice'
 import { ProfileProps } from './PreviewProfile'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { RootState } from '../utils/AppStore'
 import axios from 'axios'
+import { BASE_URL } from '../utils/Constants'
 
 const ProfileForm = (props: ProfileProps) => {
   const form = useForm<User>( {defaultValues: {
@@ -22,7 +22,7 @@ const ProfileForm = (props: ProfileProps) => {
 
   const onSaveProfile = async(values: User)=>{
     console.log('values', values)
-    const result = await axios.post('http://localhost:3000/profile/edit',values, {withCredentials: true})
+    const result = await axios.post(BASE_URL+'/profile/edit',values, {withCredentials: true})
     console.log('result', result)
     if(result){
       //console.log('result.data.user', result)

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { FeedUser, removeFeed } from '../utils/FeedSlice'
+import { BASE_URL } from '../utils/Constants'
 
 type FeedProp = {
     user: FeedUser
@@ -15,7 +16,7 @@ const FeedCard = (prop: FeedProp) => {
             toUserId: user._id
         }
         console.log('FeedCard values', values)
-        const result = await axios.put('http://localhost:3000/request/send', values, {withCredentials: true})
+        const result = await axios.put(BASE_URL+'/request/send', values, {withCredentials: true})
         console.log('FeedCard result', result)
         if(result)
             disptach(removeFeed(result.data.data))

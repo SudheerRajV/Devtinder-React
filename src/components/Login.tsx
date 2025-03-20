@@ -5,6 +5,7 @@ import  axios  from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/UserSlice'
 import { useNavigate } from 'react-router'
+import { BASE_URL } from '../utils/Constants'
 
 type loginFormValues =  {
   email: string,
@@ -21,7 +22,7 @@ const Login = () => {
 
   const onSubmit = async(values: loginFormValues) => {
     //console.log('values', values)
-    const result = await axios.post('http://localhost:3000/login', values, {withCredentials: true})
+    const result = await axios.post(BASE_URL+'/login', values, {withCredentials: true})
     console.log('result', result.data.user)
     if(result)
       dispatch(addUser(result.data.user))

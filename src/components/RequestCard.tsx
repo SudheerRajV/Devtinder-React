@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { removeRequest, RequestUsers } from '../utils/RequestSlice'
+import { RootState } from '../utils/AppStore'
 
 
 type RequestProps = {
@@ -15,7 +16,7 @@ const RequestCard = (props: RequestProps) => {
   const dispatch = useDispatch()
 
   const handleRequest= async(status: string) =>{
-    const result = await axios.put('http://localhost:3000/request/review',{status, requestId: _id},{
+    const result = await axios.put(BASE_URL+'/request/review',{status, requestId: _id},{
     // headers:{
     //     'Content-Type': 'application/json',
     //     'Access-Control-Allow-Origin': '*',

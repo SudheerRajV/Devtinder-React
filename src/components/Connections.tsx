@@ -12,7 +12,7 @@ const Connections = () => {
   const connections = useSelector((state: RootState)=> state.connections.users)
 
   const fetchConnections = async () =>{
-    const result = await axios.get('http://localhost:3000/user/connections', {withCredentials: true})
+    const result = await axios.get(BASE_URL+'/user/connections', {withCredentials: true})
     // console.log('result', result)
     if(result && result.data)
       dispatch(addConnections(result.data.data))
