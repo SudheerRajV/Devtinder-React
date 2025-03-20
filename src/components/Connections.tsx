@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addConnections } from '../utils/ConnectionSlice'
 import { RootState } from '../utils/AppStore'
+import { BASE_URL } from '../utils/Constants'
 
 const Connections = () => {
 
